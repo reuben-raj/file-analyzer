@@ -12,6 +12,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatCustomTableComponent } from './shared/components/mat-custom-table/mat-custom-table.component';
 import { SharedSortDirective } from './shared/directive/shared-sort.directive';
+import {CdkTableModule} from "@angular/cdk/table";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SharedSortDirective } from './shared/directive/shared-sort.directive';
     NgxCsvParserModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

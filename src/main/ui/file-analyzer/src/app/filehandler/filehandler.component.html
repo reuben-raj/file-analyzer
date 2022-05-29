@@ -16,7 +16,8 @@
   <h2>File Data</h2>
   <div id="displayDiv">
 
-    <table *ngIf="csvRecords">
+    <!--basic table type rendering-->
+    <!--<table *ngIf="csvRecords">
       <thead>
         <tr>
           <th [appSort]="csvRecords"
@@ -29,29 +30,13 @@
           <td *ngFor="let objKey of _object.keys(row); let j = index">{{row[objKey]}}</td>
         </tr>
       </tbody>
-    </table>
-
-    <!--<table mat-table [dataSource]="csvRecords">
-      <ng-container matColumnDef="csvRecords[0][0]">
-        <th mat-header-cell *matHeaderCellDef> Score </th>
-        <td mat-cell *matCellDef="let user"> {{csvRecords}} </td>
-      </ng-container>
     </table>-->
 
-    <!--<mat-table *ngIf="csvRecords" [dataSource]="csvRecords" matSort class="mat-elevation-z8">
-      <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
-        <mat-header-cell *matHeaderCellDef>{{column.header}}</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{row[column.columnDef]}}</mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>-->
-
-<!--    mat table - almost working-->
-    <!--<app-mat-custom-table
+    <!--Angular Materials table implementation-->
+    <app-mat-custom-table *ngIf="csvRecords"
       [dataset]="data"
       [columns]="columns">
-    </app-mat-custom-table>-->
+    </app-mat-custom-table>
 
   </div>
 

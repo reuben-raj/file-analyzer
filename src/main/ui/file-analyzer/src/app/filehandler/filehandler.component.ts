@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
 import { FilehandlerService } from "./services/filehandler.service";
 import { Statistics } from "./models/statistics";
+import {TableColumn} from "../shared/models/tableColumn";
 
 @Component({
   selector: 'app-filehandler',
@@ -18,19 +19,13 @@ export class FilehandlerComponent implements OnInit {
   csvRecords: any;
   statistics: Statistics = {numWords:0,numLetters:0};
   _object = Object;
-  // data: any[];
+
+  data!: any[];
+  columns!: any[];
 
   @ViewChild('csvReader') csvReader: any;
 
   ngOnInit(): void {
-    /*this.data = [{
-      "name": "Molly Pope",
-      "date": "Jul 27, 2021",
-      "company": "Faucibus Orci Institute",
-      "country": "New Zealand",
-      "city": "Campinas",
-      "phone": "1-403-634-0276"
-    }]*/
   }
 
   fileChangeListener($event: any): void {
@@ -44,6 +39,7 @@ export class FilehandlerComponent implements OnInit {
         console.log('Result', result);
         this.csvRecords = result;
         this.getFileStatistics();
+        this.renderMatTable();
       },
       error: (error: NgxCSVParserError): void => {
         console.log('Error', error);
@@ -57,7 +53,6 @@ export class FilehandlerComponent implements OnInit {
 
     let records = this.csvRecords;
     for(let record of records){
-
       for(let key in record){
         let val = record[key];
         this.statistics.numLetters += val.length;
@@ -67,6 +62,25 @@ export class FilehandlerComponent implements OnInit {
         }
       }
     }
+  }
+
+  renderMatTable(){
+
+    let records = this.csvRecords;
+    let cols: Array<TableColumn> = [];
+
+    if(records && records.length>0){
+      for(let key in records[0]){
+        const colHead: TableColumn = {
+          columnDef: key,
+          header: key
+        };
+        cols.push(colHead);
+      }
+    }
+
+    this.columns = cols;
+    this.data = this.csvRecords;
   }
 
   /*getCSVHeader() {

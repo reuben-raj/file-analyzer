@@ -1,1 +1,9 @@
-<p>mat-custom-table works!</p>
+<mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>{{ column.header }}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">{{ row[column.columnDef] }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
