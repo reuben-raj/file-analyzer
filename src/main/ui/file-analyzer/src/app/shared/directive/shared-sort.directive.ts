@@ -1,10 +1,10 @@
 import { Directive, Input, Renderer2, ElementRef, HostListener } from '@angular/core';
-import { Sort } from '../util/sort';
+import { Sort } from '../../util/sort';
 
 @Directive({
   selector: '[appSort]'
 })
-export class SortDirective {
+export class SharedSortDirective {
 
   @Input() appSort!: Array<any>;
 

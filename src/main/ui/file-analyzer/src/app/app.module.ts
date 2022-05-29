@@ -11,14 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatCustomTableComponent } from './shared/components/mat-custom-table/mat-custom-table.component';
-import { SortDirective } from './directive/sort.directive';
+import { SharedSortDirective } from './shared/directive/shared-sort.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilehandlerComponent,
     MatCustomTableComponent,
-    SortDirective
+    SharedSortDirective
   ],
   imports: [
     BrowserModule,

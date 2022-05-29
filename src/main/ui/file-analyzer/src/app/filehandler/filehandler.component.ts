@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
-import { FilehandlerService } from "../filehandler.service";
-import { Statistics } from "./statistics";
+import { FilehandlerService } from "./services/filehandler.service";
+import { Statistics } from "./models/statistics";
 
 @Component({
   selector: 'app-filehandler',
