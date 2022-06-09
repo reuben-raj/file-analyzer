@@ -8,25 +8,25 @@ import { Observable } from "rxjs";
 })
 export class FilehandlerService {
 
-  private statisticsUrl = 'statistics'
+  private statisticsUrl = 'http://localhost:8080/statistics';
+  private healthcheckUrl = 'http://localhost:8080/healthcheck';
+
   httpOptions = {
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
   }
-
-  // public records: any[] = [];
-  // @ViewChild('csvReader') csvReader: any;
 
   constructor(
     private http: HttpClient
   ) { }
 
-  /*getStatistics(): Statistics {
-    return this.http.get<Statistics>(this.statisticsUrl);
-  }*/
+  getStatistics(file: File): Observable<Statistics> {
+    const formData = new FormData();
+    formData.append("csvFile", file);
+    return this.http.post<Statistics>(this.statisticsUrl, formData);
+  }
 
-  /*getStatistics(): Observable<Statistics> {
-    return this.http.get<Statistics>(this.http.get(statisticsUrl));
-    // return this.http.get<Statistics>(this.statisticsUrl, statistics, {observe: 'response'});
-  }*/
+  getHealthcheck(): Observable<any> {
+    return this.http.get(`${this.healthcheckUrl}`);
+  }
 
 }

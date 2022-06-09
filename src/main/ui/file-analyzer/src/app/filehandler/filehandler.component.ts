@@ -38,13 +38,14 @@ export class FilehandlerComponent implements OnInit {
       next: (result): void => {
         console.log('Result', result);
         this.csvRecords = result;
-        this.getFileStatistics();
+        // this.getFileStatistics();
         this.renderMatTable();
       },
       error: (error: NgxCSVParserError): void => {
         console.log('Error', error);
       }
     });
+    this.filehandlerService.getStatistics(files[0]).subscribe(statistics => this.statistics = statistics);
   }
 
   getFileStatistics() {
@@ -82,13 +83,5 @@ export class FilehandlerComponent implements OnInit {
     this.columns = cols;
     this.data = this.csvRecords;
   }
-
-  /*getCSVHeader() {
-    return (this.csvRecords && this.csvRecords.length > 0) ? this.csvRecords[0] : [];
-  }*/
-
-  /*getFileStatistics(): void {
-    this.filehandlerService.getStatistics().subscribe(statistics => this.statistics = statistics);
-  }*/
 
 }
