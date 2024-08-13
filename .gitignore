@@ -3,6 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+target/
+src/main/ui/file-analyzer/node
+src/main/ui/file-analyzer/node_modules
 
 ### STS ###
 .apt_generated
